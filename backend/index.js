@@ -53,14 +53,12 @@ if (process.env.NODE_ENV === "production") {
 }
 
 connectDB()
-  .then(() => console.log('MongoDB connected at server startup'))
+  .then(() => {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+    });
+  })
   .catch(err => console.error('Initial MongoDB connection failed:', err));
-
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
-}
 
 module.exports = app;
