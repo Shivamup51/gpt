@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: your-app-name
+    name: my-gpt-app
     env: node
     buildCommand: npm install && npm run build
     startCommand: npm start
